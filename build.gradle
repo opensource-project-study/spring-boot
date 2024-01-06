@@ -28,6 +28,9 @@ allprojects {
 	group "org.springframework.boot"
 
 	repositories {
+		// 优先从maven的本地仓库加载依赖，如果本地仓库中没有，从远程仓库下载到GRADLE_USER_HOME路径下，并从改路径处引用依赖
+		// 注意：从远程仓库下载后，并不会复制到maven的本地仓库中。这一点gradle和maven是有区别的。
+		mavenLocal()
 		mavenCentral()
 		if (version.contains('-')) {
 			maven { url "https://repo.spring.io/milestone" }
